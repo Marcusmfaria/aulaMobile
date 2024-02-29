@@ -1,67 +1,25 @@
 import React from "react";
-import { View } from "react-native";
-import { Avatar, Input, Button, Text, Divider } from 'react-native-elements';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Login from "./screens/login";
+import Cadastro from "./screens/cadastro";
+import Home from "./screens/home";
 
+const Stack = createNativeStackNavigator();
 
-
-const Flex = () => {
+const App = () => {
 return (
-  <View>
+  <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Cadastro" component={Cadastro} />
+        <Stack.Screen name="Home" component={Home} />
+      </Stack.Navigator>
+    </NavigationContainer>
 
-    <View>
-    <Avatar
-    size="large"
-  rounded
-  source={{
-    uri:
-      'https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png',
-  }}
-/>
-
-<Text h3>Login</Text>
-<Input
-  placeholder="Digite seu email"
-/>
-<Input
-  placeholder='Digite sua senha'
-/>
-<Button
-  title="Entrar"
-  buttonStyle={backgroundcolor: green}
-/>
-<Divider orientation="horizontal" />
-
-<Button
-  title="Cadastrar"
-  type="outline"
-/>
-    </View>
-
-    <View>
-    <Divider orientation="horizontal" />
-    
-      <Text h3>Cadastro</Text>
-
-      <Text h5>Nome completo</Text>
-      <Input/>
-
-      <Text h5>Email</Text>
-      <Input/>
-
-      <Text h5>Senha</Text>
-      <Input/>
-
-      <Button
-  title="Cadastrar"
-  type="outline"
-/>
-
-    </View>
-    
-  </View>
   
 );
 };
 
 
-export default Flex;
+export default App;
