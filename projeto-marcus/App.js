@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from "./screens/login";
 import Cadastro from "./screens/cadastro";
 import Home from "./screens/home";
+import NovoContato from "./screens/novoContato";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +15,7 @@ return (
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Cadastro" component={Cadastro} />
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="NovoContato" component={NovoContato} />
       </Stack.Navigator>
     </NavigationContainer>
 

@@ -2,31 +2,36 @@ import * as React from 'react';
 import { Input, Button, Text, Divider } from 'react-native-elements';
 import { View } from "react-native";
 
-export default class Cadastro extends React.Component{
-    render() {
-        return (
-            <View>
-     <Divider orientation="horizontal" />
+export default class Cadastro extends React.Component {
+  render() {
+
+    
+    return (
+      <View>
+        <Divider orientation="horizontal" />
 
 
-       <Text h5>Nome completo</Text>
-       <Input/>
+        <Input
+          placeholder="Digite seu nome completo"
+        />
 
-       <Text h5>Email</Text>
-       <Input/>
+        <Input
+          placeholder="Digite seu email"
+        />
 
-       <Text h5>Senha</Text>
-       <Input/>
+        <Input
+          placeholder="Digite sua senha"
+        />
 
-       <Button
-  title="Cadastrar"
-  type="outline"
-  onPress={
-    () => this.props.navigation.navigate('Login')
+        <Button
+          title="Cadastrar"
+          type="outline"
+          onPress={
+            () => this.props.navigation.navigate('Login')
+          }
+        />
+
+      </View>
+    )
   }
-/>
-
-    </View>
-        )
-    }
 }
