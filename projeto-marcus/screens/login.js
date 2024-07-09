@@ -2,8 +2,7 @@ import * as React from 'react';
 import { Avatar, Input, Button, Text, Divider } from 'react-native-elements';
 import { View } from "react-native";
 
-export default class Login extends React.Component {
-  render() {
+const Login = ({navigation}) => {
     return (
       <View>
         <Avatar
@@ -23,20 +22,18 @@ export default class Login extends React.Component {
         />
         <Button
           title="Entrar"
-          onPress={
-            () => this.props.navigation.navigate('Home')
-          }
+          onPress={() => navigation.navigate('Home')}
         />
         <Divider orientation="horizontal" />
 
         <Button
           title="Cadastrar"
           type="outline"
-          onPress={
-            () => this.props.navigation.navigate('Cadastro')
-          }
+          onPress={() => navigation.navigate('Cadastro')}
         />
       </View>
     )
-  }
+
 }
+
+export default Login;

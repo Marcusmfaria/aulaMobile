@@ -5,6 +5,7 @@ import Login from "./screens/login";
 import Cadastro from "./screens/cadastro";
 import Home from "./screens/home";
 import NovoContato from "./screens/novoContato";
+import AlterarContato from "./screens/alterarContato";
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ return (
         <Stack.Screen name="Cadastro" component={Cadastro} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="NovoContato" component={NovoContato} />
+        <Stack.Screen name="AlterarContato" component={AlterarContato} />
       </Stack.Navigator>
     </NavigationContainer>
 

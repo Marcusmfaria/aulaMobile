@@ -2,9 +2,7 @@ import * as React from 'react';
 import { Input, Button, Text, Divider } from 'react-native-elements';
 import { View } from "react-native";
 
-export default class Cadastro extends React.Component {
-  render() {
-
+const Cadastro = () => {
     
     return (
       <View>
@@ -26,12 +24,11 @@ export default class Cadastro extends React.Component {
         <Button
           title="Cadastrar"
           type="outline"
-          onPress={
-            () => this.props.navigation.navigate('Login')
-          }
+          onPress={() => navigation.navigate('Login')}
         />
 
       </View>
     )
-  }
 }
+
+export default Cadastro;
