@@ -1,68 +1,56 @@
-import * as React from 'react';
-import { Input, Button, Divider } from 'react-native-elements';
-import { View } from "react-native";
-import { useState } from "react";
-import app from "../firebase"
+import { Button} from "react-native-elements";
+import { View } from "react-native-web";
+import { Text, TextInput } from "react-native";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import app from "../firebase"
 import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
+
 
 const Cadastro = () => {
-
-  const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  
 
-const auth = getAuth();
-const navigation = useNavigation();
+  const auth = getAuth();
 
-  const cadastrar = () => {
-    console.log(senha)
-    console.log(email)
-    console.log(auth)
+
+  const salvar = () => {
+   
     createUserWithEmailAndPassword(auth, email, senha)
-    .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        SignedIn()
+        
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode + "  " + errorMessage)
+        // ..
+      });
+  };
+  const navigation = useNavigation();
+  
+  const SignedIn = () => {
     navigation.navigate('Home');
-    // ...
-    })
-    .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-    });
-  }
+  };
 
-    
+  
+
     return (
-      <View>
-        <Divider orientation="horizontal" />
-
-
-        <Input
-          value={nome}
-          onChangeText={setNome}
-          placeholder="Digite seu nome completo"
-        />
-
-        <Input 
-          value={email}
-          onChangeText={setEmail}
-          placeholder="Digite seu email"
-        />
-
-        <Input
-          value={senha}
-          onChangeText={setSenha}
-          placeholder="Digite sua senha"
-        />
-
-<Button  
-title="Salvar" 
-onPress={() => cadastrar()}/> 
-
-      </View>
-    )
-}
+  <View>
+  <Text>e-mail</Text>
+  <TextInput  value={email}
+            onChangeText={setEmail}></TextInput>
+  <Text>senha</Text>
+  <TextInput secureTextEntry='true'  value={senha}
+            onChangeText={setSenha}></TextInput>
+  <Button title="Salvar" onPress={() => salvar()}/> 
+  </View>
+  );
+};
 
 export default Cadastro;

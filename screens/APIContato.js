@@ -27,7 +27,6 @@ const Contato = {
         return instance.delete("/Contatos/" + idContato)
     }
 
-
 }
 
 export default Contato;
