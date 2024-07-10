@@ -1,8 +1,32 @@
 import * as React from 'react';
-import { Avatar, Input, Button, Text, Divider } from 'react-native-elements';
+import { Avatar, Input, Button, Divider } from 'react-native-elements';
 import { View } from "react-native";
+import { useState } from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigation } from "@react-navigation/native";
 
-const Login = ({navigation}) => {
+
+const Login = () => {
+
+  const navigation = useNavigation();
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const auth = getAuth();
+
+  const login = () =>{
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, senha)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        setTimeout(() => navigation.navigate("Home"), 3000); 
+        
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+    }
+
     return (
       <View>
         <Avatar
@@ -15,14 +39,19 @@ const Login = ({navigation}) => {
         />
 
         <Input
+          value={email} 
+          onChangeText={setEmail}
           placeholder="Digite seu email"
         />
         <Input
+          value={senha} 
+          onChangeText={setSenha}
           placeholder='Digite sua senha'
         />
         <Button
+          onPress={login}
           title="Entrar"
-          onPress={() => navigation.navigate('Home')}
+          
         />
         <Divider orientation="horizontal" />
 

@@ -3,6 +3,7 @@ import { View, StyleSheet, Alert } from "react-native";
 import { ListItem, Icon } from 'react-native-elements';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import Contato from "./APIContato";
+
 const Home = () => {
   const [contatos, setContatos] = useState([]);
   const navigation = useNavigation();
